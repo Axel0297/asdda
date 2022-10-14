@@ -1,19 +1,25 @@
-﻿using System.Collections.Generic;
-using NetChallenge.Abstractions;
+﻿using NetChallenge.Abstractions;
 using NetChallenge.Domain;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NetChallenge.Infrastructure
 {
     public class BookingRepository : IBookingRepository
     {
+        readonly List<Booking> Bookings = new List<Booking>();
+
         public IEnumerable<Booking> AsEnumerable()
         {
-            throw new System.NotImplementedException();
+            IEnumerable<Booking> lst =
+               from b in Bookings
+               select b;
+            return lst;
         }
 
         public void Add(Booking item)
         {
-            throw new System.NotImplementedException();
+            Bookings.Add(item);
         }
     }
 }

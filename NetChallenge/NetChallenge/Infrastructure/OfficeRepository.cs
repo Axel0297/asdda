@@ -1,19 +1,25 @@
-﻿using System.Collections.Generic;
-using NetChallenge.Abstractions;
+﻿using NetChallenge.Abstractions;
 using NetChallenge.Domain;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NetChallenge.Infrastructure
 {
     public class OfficeRepository : IOfficeRepository
     {
+        readonly List<Office> Offices = new List<Office>();
+
         public IEnumerable<Office> AsEnumerable()
         {
-            throw new System.NotImplementedException();
+            IEnumerable<Office> lst =
+               from o in Offices
+               select o;
+               return lst;
         }
 
         public void Add(Office item)
         {
-            throw new System.NotImplementedException();
+            Offices.Add(item);
         }
     }
-}
+}   
